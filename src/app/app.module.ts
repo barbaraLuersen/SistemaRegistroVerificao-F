@@ -7,6 +7,7 @@ import { ServicoDetalheComponent } from './core/servicos/servico-detalhe/servico
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent, ServicoDetalheComponent],
@@ -16,6 +17,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     HttpClientModule,
     FormsModule,
     SweetAlert2Module.forRoot(), //https://github.com/sweetalert2/ngx-sweetalert2
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
