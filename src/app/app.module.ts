@@ -6,23 +6,22 @@ import { AppComponent } from './app.component';
 import { ServicoDetalheComponent } from './core/servicos/servico-detalhe/servico-detalhe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ServicoDetalheComponent
-  ],
+  declarations: [AppComponent, ServicoDetalheComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     NgSelectModule,
-    FontAwesomeModule
+    SweetAlert2Module.forRoot(), //https://github.com/sweetalert2/ngx-sweetalert2
+    FontAwesomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
