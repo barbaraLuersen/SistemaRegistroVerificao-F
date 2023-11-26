@@ -1,0 +1,10 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-servico-cadastro',
+  templateUrl: './servico-cadastro.component.html',
+  styleUrls: ['./servico-cadastro.component.scss']
+})
+export class ServicoCadastroComponent {
+
+}
