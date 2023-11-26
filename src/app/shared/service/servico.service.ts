@@ -9,7 +9,7 @@ import { ServicoSeletor } from '../model/seletor/servico.seletor';
 })
 export class ServicosService {
 
-  private readonly API = 'http://localhost:8080/api/usuarios';
+  private readonly API = 'http://localhost:8080/api/servicoPrestado';
 
   constructor(private httpClient: HttpClient) {
     //TODO: Implementar métodos
