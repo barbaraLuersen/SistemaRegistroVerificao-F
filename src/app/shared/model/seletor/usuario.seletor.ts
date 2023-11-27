@@ -1,4 +1,2 @@
 //TODO: Implementar
-export class UsuarioSeletor {
-
-}
+export class UsuarioSeletor {}
