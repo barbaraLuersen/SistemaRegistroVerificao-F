@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { UsuariosRoutingModule } from './usuarios-routing.module';
 import { UsuarioCadastroComponent } from './usuario-cadastro/usuario-cadastro.component';
@@ -8,18 +9,14 @@ import { UsuarioListagemComponent } from './usuario-listagem/usuario-listagem.co
 import { UsuarioEdicaoComponent } from './usuario-edicao/usuario-edicao.component';
 import { UsuarioAfastamentoComponent } from './usuario-afastamento/usuario-afastamento.component';
 
-
 @NgModule({
   declarations: [
     UsuarioCadastroComponent,
     UsuarioPerfilComponent,
     UsuarioListagemComponent,
     UsuarioEdicaoComponent,
-    UsuarioAfastamentoComponent
+    UsuarioAfastamentoComponent,
   ],
-  imports: [
-    CommonModule,
-    UsuariosRoutingModule
-  ]
+  imports: [CommonModule, UsuariosRoutingModule, FormsModule],
 })
-export class UsuariosModule { }
+export class UsuariosModule {}

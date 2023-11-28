@@ -1,1 +1,135 @@
-<p>usuario-cadastro works!</p>
+<br />
+<div class="container-fluid container text-center">
+  <form class="was-validated" #ngForm="ngForm">
+    <div class="row">
+      <h1>CADASTRO DE USUÁRIO</h1>
+      <!--NOME-->
+      <div class="form-group col-md-6">
+        <label for="nome">Nome: </label>
+        <input
+          class="form-control"
+          minlength="2"
+          name="nome"
+          [(ngModel)]="usuario.nome"
+          required
+        />
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">
+          Informe um nome com no mínimo 2 caracteres
+        </div>
+      </div>
+      <!--CPF-->
+      <div class="form-group col-md-6">
+        <label for="cpf">CPF: </label>
+        <input
+          class="form-control"
+          placeholder="000.000.000-00"
+          minlength="11"
+          name="cpf"
+          [(ngModel)]="usuario.cpf"
+          required
+        />
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">Informe um cpf válido.</div>
+      </div>
+      <!--TELEFONE-->
+      <div class="form-group col-md-6">
+        <label for="telefone">Telefone: </label>
+        <input
+          class="form-control"
+          placeholder="(00) 00000-0000"
+          minlength="11"
+          name="telefone"
+          [(ngModel)]="usuario.telefone"
+          required
+        />
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">
+          Informe um número de telefone válido. Lembre-se do DDD.
+        </div>
+      </div>
+      <!--DATA DE NASCIMENTO-->
+      <div class="form-group col-md-6">
+        <label for="dataNascimento">Data de Nascimento: </label>
+        <input
+          class="form-control"
+          placeholder="dd/mm/aaaa"
+          minlength="8"
+          name="dataNascimento"
+          [(ngModel)]="usuario.dataNacimento"
+          required
+        />
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">Informe uma data válida.</div>
+      </div>
+      <!--CTPS-->
+      <div class="form-group col-md-6">
+        <label for="ctps">CTPS: </label>
+        <input
+          class="form-control"
+          placeholder="0000000/0000"
+          minlength="11"
+          name="ctps"
+          [(ngModel)]="usuario.ctps"
+          required
+        />
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">Informe um ctps válido.</div>
+      </div>
+      <!--NIVEL DE ACESSO-->
+      <div class="form-group col-md-6">
+        <label for="nivelAcesso">Nível de Acesso: </label>
+        <input
+          class="form-control"
+          placeholder="Selecione o nível de acesso"
+          name="nivelAcesso"
+          [(ngModel)]="usuario.nivelAcesso"
+          required
+        />
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">Informe o nível de acesso.</div>
+      </div>
+      <!--CARGO-->
+      <div class="form-group col-md-6">
+        <label for="cargo">Cargo: </label>
+        <input
+          class="form-control"
+          placeholder="Selecione o cargo"
+          name="cargo"
+          [(ngModel)]="usuario.cargo"
+          required
+        />
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">Informe o cargo.</div>
+      </div>
+      <!--MATRICULA-->
+      <div class="form-group col-md-6">
+        <label for="matricula">Matrícula: </label>
+        <input
+          class="form-control"
+          name="cargo"
+          [(ngModel)]="usuario.matricula"
+          required
+        />
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">Informe a matricula.</div>
+      </div>
+      <!--SENHA-->
+      <div class="form-group col-md-6">
+        <label for="senha">Senha: </label>
+        <input
+          class="form-control"
+          minlength="8"
+          name="senha"
+          [(ngModel)]="usuario.senha"
+          required
+        />
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">Informe uma senha válida.</div>
+      </div>
+      <button id="btn-salvar" class="btn" onclick="salvar()" type="button">
+        cadastrar usuário
+      </button>
+    </div>
+  </form>
+</div>
