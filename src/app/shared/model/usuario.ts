@@ -1,6 +1,5 @@
 import { Afastamento } from './afastamento';
 
-//TODO: Implementar
 export class Usuario {
   id: number;
   nome: string;

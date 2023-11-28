@@ -4,8 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/usuario';
 import { UsuarioService } from './../../shared/service/usuario.service';
 import Swal from 'sweetalert2';
-import { Afastamento } from 'src/app/shared/model/afastamento';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -26,8 +24,6 @@ export class UsuarioCadastroComponent implements OnInit {
   public senha: string;
   public dataContratacao: Date;
   public statusUsuario: string;
-  public afastamentos: Afastamento[] = [];
-  public dataDesligamento: Date;
 
   @ViewChild('ngForm')
   public ngForm: NgForm;
