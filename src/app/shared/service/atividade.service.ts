@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AtividadeService {
-  private readonly API = 'http://localhost:8080/api/usuarios';
+  private readonly API = 'http://localhost:8080/api/atividade';
 
   constructor(private httpClient: HttpClient) {}
 

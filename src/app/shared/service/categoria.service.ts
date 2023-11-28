@@ -8,7 +8,7 @@ import { CategoriaSeletor } from '../model/seletor/categoria.seletor';
   providedIn: 'root',
 })
 export class CategoriaService {
-  private readonly API = 'http://localhost:8080/api/usuarios';
+  private readonly API = 'http://localhost:8080/api/categoria';
 
   constructor(private httpClient: HttpClient) {}
   inserir(categoria: Categoria): Observable<Categoria> {

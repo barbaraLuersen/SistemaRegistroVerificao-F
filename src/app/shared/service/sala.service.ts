@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SalaService {
-  private readonly API = 'http://localhost:8080/api/usuarios';
+  private readonly API = 'http://localhost:8080/api/sala';
 
   constructor(private httpClient: HttpClient) {}
   inserir(sala: Sala): Observable<Sala> {
