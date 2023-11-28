@@ -8,7 +8,7 @@ import { UsuarioSeletor } from '../model/seletor/usuario.seletor';
   providedIn: 'root',
 })
 export class UsuarioService {
-  private readonly API = 'http://localhost:8080/api/usuarios';
+  private readonly API = 'http://localhost:8080/api/usuario';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -33,5 +33,9 @@ export class UsuarioService {
   }
   excluir(id: number): Observable<Usuario> {
     return this.httpClient.delete<Usuario>(this.API + '/' + id);
+  }
+
+  listarCargos(): Observable<Array<string>> {
+    return this.httpClient.get<Array<string>>(this.API + '/cargos');
   }
 }

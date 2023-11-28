@@ -8,7 +8,7 @@ const routes: Routes = [
       import('./usuarios/usuarios.module').then((m) => m.UsuariosModule),
   },
   {
-    path: 'servicoPrestado',
+    path: 'servicos',
     loadChildren: () =>
       import('./servicos/servicos.module').then((m) => m.ServicosModule),
   },
