@@ -1,10 +1,14 @@
 <br />
-<div class="container-fluid container text-center">
+<div class="container-fluid">
   <form class="was-validated" #ngForm="ngForm">
     <div class="row">
-      <h1>CADASTRO DE USUÁRIO</h1>
-      <!--NOME-->
-      <div class="form-group col-md-6">
+      <div class="col align-self-start col-md-6 offset-md-3">
+        <h1>CADASTRO DE USUÁRIO</h1>
+      </div>
+    </div>
+    <!--NOME-->
+    <div class="row">
+      <div class="col align-self-center col-md-6 offset-md-3">
         <label for="nome">Nome: </label>
         <input
           class="form-control"
@@ -18,8 +22,10 @@
           Informe um nome com no mínimo 2 caracteres
         </div>
       </div>
-      <!--CPF-->
-      <div class="form-group col-md-6">
+    </div>
+    <!--CPF-->
+    <div class="row">
+      <div class="col align-self-center col-md-6 offset-md-3">
         <label for="cpf">CPF: </label>
         <input
           class="form-control"
@@ -32,8 +38,10 @@
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Informe um cpf válido.</div>
       </div>
-      <!--TELEFONE-->
-      <div class="form-group col-md-6">
+    </div>
+    <!--TELEFONE-->
+    <div class="row">
+      <div class="col align-self-center col-md-6 offset-md-3">
         <label for="telefone">Telefone: </label>
         <input
           class="form-control"
@@ -48,8 +56,10 @@
           Informe um número de telefone válido. Lembre-se do DDD.
         </div>
       </div>
-      <!--DATA DE NASCIMENTO-->
-      <div class="form-group col-md-6">
+    </div>
+    <!--DATA DE NASCIMENTO-->
+    <div class="row">
+      <div class="col align-self-center col-md-6 offset-md-3">
         <label for="dataNascimento">Data de Nascimento: </label>
         <input
           class="form-control"
@@ -62,8 +72,10 @@
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Informe uma data válida.</div>
       </div>
-      <!--CTPS-->
-      <div class="form-group col-md-6">
+    </div>
+    <!--CTPS-->
+    <div class="row">
+      <div class="col align-self-center col-md-6 offset-md-3">
         <label for="ctps">CTPS: </label>
         <input
           class="form-control"
@@ -76,8 +88,10 @@
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Informe um ctps válido.</div>
       </div>
-      <!--NIVEL DE ACESSO-->
-      <div class="form-group col-md-6">
+    </div>
+    <!--NIVEL DE ACESSO-->
+    <div class="row">
+      <div class="col align-self-center col-md-6 offset-md-3">
         <label for="nivelAcesso">Nível de Acesso: </label>
         <input
           class="form-control"
@@ -89,21 +103,32 @@
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Informe o nível de acesso.</div>
       </div>
-      <!--CARGO-->
-      <div class="form-group col-md-6">
+    </div>
+    <!--CARGO-->
+    <div class="row">
+      <div class="col align-self-center col-md-6 offset-md-3">
         <label for="cargo">Cargo: </label>
-        <input
-          class="form-control"
+        <select
           placeholder="Selecione o cargo"
+          class="form-select"
           name="cargo"
+          [ngModelOptions]="{ standalone: true }"
+          aria-label="Selecione um cargo"
           [(ngModel)]="usuario.cargo"
           required
-        />
+        >
+          <option *ngFor="let cargo of cargos" [ngValue]="cargo">
+            {{ cargo }}
+          </option>
+        </select>
+
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Informe o cargo.</div>
       </div>
-      <!--MATRICULA-->
-      <div class="form-group col-md-6">
+    </div>
+    <!--MATRICULA-->
+    <div class="row">
+      <div class="col align-self-center col-md-6 offset-md-3">
         <label for="matricula">Matrícula: </label>
         <input
           class="form-control"
@@ -114,8 +139,10 @@
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Informe a matricula.</div>
       </div>
-      <!--SENHA-->
-      <div class="form-group col-md-6">
+    </div>
+    <!--SENHA-->
+    <div class="row">
+      <div class="col align-self-center col-md-6 offset-md-3">
         <label for="senha">Senha: </label>
         <input
           class="form-control"
@@ -127,9 +154,13 @@
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Informe uma senha válida.</div>
       </div>
-      <button id="btn-salvar" class="btn" onclick="salvar()" type="button">
-        cadastrar usuário
-      </button>
+    </div>
+    <div class="row">
+      <div class="col align-self-end col-md-3 offset-md-7">
+        <button id="btn-salvar" class="btn" onclick="salvar()" type="button">
+          Cadastrar Usuário
+        </button>
+      </div>
     </div>
   </form>
 </div>
