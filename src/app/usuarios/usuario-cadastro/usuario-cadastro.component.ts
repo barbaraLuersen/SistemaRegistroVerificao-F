@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/usuario';
 import { UsuarioService } from './../../shared/service/usuario.service';
 import Swal from 'sweetalert2';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -14,6 +13,7 @@ import { Observable } from 'rxjs';
 export class UsuarioCadastroComponent implements OnInit {
   public usuario: Usuario = new Usuario();
   public cargos: string[] = [];
+  public niveis: string[] = [];
 
   @ViewChild('ngForm')
   public ngForm: NgForm;
@@ -31,6 +31,19 @@ export class UsuarioCadastroComponent implements OnInit {
       },
       (erro) => {
         Swal.fire('Erro', 'Erro ao buscar os cargos: ' + erro, 'error');
+      }
+    );
+
+    this.usuarioService.listarNiveis().subscribe(
+      (resultado) => {
+        this.niveis = resultado;
+      },
+      (erro) => {
+        Swal.fire(
+          'Erro',
+          'Erro ao buscar os níveis de acesso: ' + erro,
+          'error'
+        );
       }
     );
   }
