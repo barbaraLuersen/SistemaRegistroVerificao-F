@@ -1,1 +1,197 @@
-<p>usuario-listagem works!</p>
+<!--FILTRO-->
+<!--<nav class="navbar bg-body-tertiary">-->
+<br />
+<div class="container-fluid">
+  <form>
+    <div class="row mb-2">
+      <div class="col col-sm-2 offset-sm-3">
+        <label>Nome: </label>
+      </div>
+      <div class="col col-sm-4">
+        <input class="form-control" type="nome" />
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col col-sm-2 offset-sm-3">
+        <label>Cargo: </label>
+      </div>
+      <div class="col col-sm-4">
+        <select
+          class="form-select"
+          name="cargo"
+          [ngModelOptions]="{ standalone: true }"
+          aria-placeholder="Selecione um cargo"
+          [(ngModel)]="usuario.cargo"
+          required
+        >
+          <option *ngFor="let cargo of cargos" [ngValue]="cargo">
+            {{ cargo }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col col-md-3 offset-md-7 d-flex justify-content-center">
+        <button
+          id="btn-filtrar"
+          class="btn fw-semibold"
+          style="
+            background: linear-gradient(180deg, #4ac9ff 0%, #06b5ec 100%);
+            color: #00314d;
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+          "
+          onclick="filtrarUsuario()"
+          type="submit"
+        >
+          Filtrar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<br />
+<!--</nav>-->
+
+<div class="row">
+  <div class="col align-self-start col-md-6 offset-md-3">
+    <h3>CONSULTA DE FUNCIONÁRIOS</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <table class="rounded-3 overflow-hidden table table-primary table-striped">
+      <thead>
+        <tr>
+          <th
+            scope="col"
+            class="text-center"
+            style="background-color: #0c62a0; color: #e9f8ff"
+          >
+            Nome
+          </th>
+          <th
+            scope="col"
+            class="text-center"
+            style="background-color: #0c62a0; color: #e9f8ff"
+          >
+            Cargo
+          </th>
+          <th
+            scope="col"
+            class="text-center"
+            style="background-color: #0c62a0; color: #e9f8ff"
+          >
+            Status
+          </th>
+          <th
+            scope="col"
+            class="text-center"
+            style="background-color: #0c62a0; color: #e9f8ff"
+          >
+            Data de desligamento
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td class="text-center">{{ usuario.nome }}</td>
+          <td class="text-center">{{ usuario.cargo }}</td>
+          <td class="text-center">{{ usuario.statusUsuario }}</td>
+          <td class="text-center">
+            {{ usuario.dataDesligamento | date : "dd/MM/yyyy" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--TODO Descobrir quais os links que devo colocar no href-->
+<div class="row">
+  <nav aria-label="Navegação">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          href="#"
+          aria-label="Anterior"
+          style="background-color: #dcf2fc"
+        >
+          <span aria-hidden="true" style="color: #00314d">&#9666;</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          style="color: #00314d; background-color: #caeaf8"
+          href="#"
+          >1</a
+        >
+      </li>
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          style="color: #00314d; background-color: #dcf2fc"
+          href="#"
+          >2</a
+        >
+      </li>
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          style="color: #00314d; background-color: #caeaf8"
+          href="#"
+          >3</a
+        >
+      </li>
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          href="#"
+          aria-label="Próximo"
+          style="background-color: #dcf2fc"
+        >
+          <span aria-hidden="true" style="color: #00314d">&#9656;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col col-md-3 offset-md-3 justify-content-center">
+    <button
+      id="btn-exportar"
+      class="btn fw-semibold"
+      style="
+        background: linear-gradient(180deg, #4ac9ff 0%, #06b5ec 100%);
+        color: #00314d;
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+      "
+      onclick="exportarUsuario()"
+      type="submit"
+    >
+      Exportar
+    </button>
+  </div>
+  <div class="col col-md-2 justify-content-center"></div>
+
+  <div class="col col-md-3 justify-content-center">
+    <button
+      id="btn-voltar"
+      class="btn fw-semibold"
+      style="
+        background: linear-gradient(180deg, #4ac9ff 0%, #06b5ec 100%);
+        color: #00314d;
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+      "
+      onclick="voltarUsuario()"
+      type="submit"
+    >
+      Voltar
+    </button>
+  </div>
+</div>
