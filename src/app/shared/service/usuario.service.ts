@@ -38,4 +38,8 @@ export class UsuarioService {
   listarCargos(): Observable<Array<string>> {
     return this.httpClient.get<Array<string>>(this.API + '/cargos');
   }
+
+  listarNiveis(): Observable<Array<string>> {
+    return this.httpClient.get<Array<string>>(this.API + '/niveisAcesso');
+  }
 }

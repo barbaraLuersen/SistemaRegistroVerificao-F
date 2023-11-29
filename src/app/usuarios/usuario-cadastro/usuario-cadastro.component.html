@@ -1,15 +1,18 @@
 <br />
 <div class="container-fluid">
-  <form class="was-validated" #ngForm="ngForm">
+  <form class="was-validated" #ngForm="ngForm" novalidate>
     <div class="row">
       <div class="col align-self-start col-md-6 offset-md-3">
-        <h1>CADASTRO DE USUÁRIO</h1>
+        <h3>CADASTRO DE USUÁRIO</h3>
       </div>
     </div>
+    <!--TODO Ativar mensagem de validação apenas quando algo for inválido-->
     <!--NOME-->
     <div class="row">
-      <div class="col align-self-center col-md-6 offset-md-3">
+      <div class="col col-sm-2 offset-sm-3">
         <label for="nome">Nome: </label>
+      </div>
+      <div class="col col-sm-4">
         <input
           class="form-control"
           minlength="2"
@@ -17,7 +20,7 @@
           [(ngModel)]="usuario.nome"
           required
         />
-        <div class="valid-feedback">Válido.</div>
+        <div class="valid-feedback"></div>
         <div class="invalid-feedback">
           Informe um nome com no mínimo 2 caracteres
         </div>
@@ -25,8 +28,10 @@
     </div>
     <!--CPF-->
     <div class="row">
-      <div class="col align-self-center col-md-6 offset-md-3">
+      <div class="col col-sm-2 offset-sm-3">
         <label for="cpf">CPF: </label>
+      </div>
+      <div class="col col-sm-4">
         <input
           class="form-control"
           placeholder="000.000.000-00"
@@ -35,14 +40,16 @@
           [(ngModel)]="usuario.cpf"
           required
         />
-        <div class="valid-feedback">Válido.</div>
+        <div class="valid-feedback"></div>
         <div class="invalid-feedback">Informe um cpf válido.</div>
       </div>
     </div>
     <!--TELEFONE-->
     <div class="row">
-      <div class="col align-self-center col-md-6 offset-md-3">
+      <div class="col col-sm-2 offset-sm-3">
         <label for="telefone">Telefone: </label>
+      </div>
+      <div class="col col-sm-4">
         <input
           class="form-control"
           placeholder="(00) 00000-0000"
@@ -51,7 +58,7 @@
           [(ngModel)]="usuario.telefone"
           required
         />
-        <div class="valid-feedback">Válido.</div>
+        <div class="valid-feedback"></div>
         <div class="invalid-feedback">
           Informe um número de telefone válido. Lembre-se do DDD.
         </div>
@@ -59,8 +66,10 @@
     </div>
     <!--DATA DE NASCIMENTO-->
     <div class="row">
-      <div class="col align-self-center col-md-6 offset-md-3">
+      <div class="col col-sm-2 offset-sm-3">
         <label for="dataNascimento">Data de Nascimento: </label>
+      </div>
+      <div class="col col-sm-4">
         <input
           class="form-control"
           placeholder="dd/mm/aaaa"
@@ -69,14 +78,16 @@
           [(ngModel)]="usuario.dataNacimento"
           required
         />
-        <div class="valid-feedback">Válido.</div>
+        <div class="valid-feedback"></div>
         <div class="invalid-feedback">Informe uma data válida.</div>
       </div>
     </div>
     <!--CTPS-->
     <div class="row">
-      <div class="col align-self-center col-md-6 offset-md-3">
+      <div class="col col-sm-2 offset-sm-3">
         <label for="ctps">CTPS: </label>
+      </div>
+      <div class="col col-sm-4">
         <input
           class="form-control"
           placeholder="0000000/0000"
@@ -85,31 +96,41 @@
           [(ngModel)]="usuario.ctps"
           required
         />
-        <div class="valid-feedback">Válido.</div>
+        <div class="valid-feedback"></div>
         <div class="invalid-feedback">Informe um ctps válido.</div>
       </div>
     </div>
+    <!--TODO aria-label não está funcionando e quando coloco um style aq ele some aquela setinha do campo de seleção-->
     <!--NIVEL DE ACESSO-->
     <div class="row">
-      <div class="col align-self-center col-md-6 offset-md-3">
+      <div class="col col-sm-2 offset-sm-3">
         <label for="nivelAcesso">Nível de Acesso: </label>
-        <input
-          class="form-control"
-          placeholder="Selecione o nível de acesso"
+      </div>
+      <div class="col col-sm-4">
+        <select
+          class="form-select"
           name="nivelAcesso"
+          [ngModelOptions]="{ standalone: true }"
+          aria-label="Selecione um nivel de acesso"
           [(ngModel)]="usuario.nivelAcesso"
           required
-        />
-        <div class="valid-feedback">Válido.</div>
+        >
+          <option *ngFor="let nivelAcesso of niveis" [ngValue]="nivelAcesso">
+            {{ nivelAcesso }}
+          </option>
+        </select>
+        <div class="valid-feedback"></div>
         <div class="invalid-feedback">Informe o nível de acesso.</div>
       </div>
     </div>
+    <!--TODO aria-label não está funcionando e quando coloco um style aq ele some aquela setinha do campo de seleção-->
     <!--CARGO-->
     <div class="row">
-      <div class="col align-self-center col-md-6 offset-md-3">
+      <div class="col col-sm-2 offset-sm-3">
         <label for="cargo">Cargo: </label>
+      </div>
+      <div class="col col-sm-4">
         <select
-          placeholder="Selecione o cargo"
           class="form-select"
           name="cargo"
           [ngModelOptions]="{ standalone: true }"
@@ -121,29 +142,32 @@
             {{ cargo }}
           </option>
         </select>
-
-        <div class="valid-feedback">Válido.</div>
+        <div class="valid-feedback"></div>
         <div class="invalid-feedback">Informe o cargo.</div>
       </div>
     </div>
     <!--MATRICULA-->
     <div class="row">
-      <div class="col align-self-center col-md-6 offset-md-3">
+      <div class="col col-sm-2 offset-sm-3">
         <label for="matricula">Matrícula: </label>
+      </div>
+      <div class="col col-sm-4">
         <input
           class="form-control"
-          name="cargo"
+          name="matricula"
           [(ngModel)]="usuario.matricula"
           required
         />
-        <div class="valid-feedback">Válido.</div>
+        <div class="valid-feedback"></div>
         <div class="invalid-feedback">Informe a matricula.</div>
       </div>
     </div>
     <!--SENHA-->
     <div class="row">
-      <div class="col align-self-center col-md-6 offset-md-3">
+      <div class="col col-sm-2 offset-sm-3">
         <label for="senha">Senha: </label>
+      </div>
+      <div class="col col-sm-4">
         <input
           class="form-control"
           minlength="8"
@@ -151,13 +175,23 @@
           [(ngModel)]="usuario.senha"
           required
         />
-        <div class="valid-feedback">Válido.</div>
+        <div class="valid-feedback"></div>
         <div class="invalid-feedback">Informe uma senha válida.</div>
       </div>
     </div>
     <div class="row">
-      <div class="col align-self-end col-md-3 offset-md-7">
-        <button id="btn-salvar" class="btn" onclick="salvar()" type="button">
+      <div class="col col-md-3 offset-md-7 d-flex justify-content-center">
+        <button
+          id="btn-salvar"
+          class="btn"
+          style="
+            background: linear-gradient(180deg, #4ac9ff 0%, #06b5ec 100%);
+            color: #00314d;
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+          "
+          onclick="inserirUsuario()"
+          type="submit"
+        >
           Cadastrar Usuário
         </button>
       </div>
