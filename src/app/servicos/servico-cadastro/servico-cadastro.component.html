@@ -1,1 +1,76 @@
-<p>servico-cadastro works!</p>
+<div class="container-fluid">
+  <!-- <form class="was-validated" #ngForm="ngForm"> -->
+  <form class="was-validated">
+    <div class="row mt-4 mb-4">
+      <div class="col align-self-start col-10 col-sm-6 offset-2 offset-sm-3">
+        <h1>Registro de Serviço</h1>
+      </div>
+    </div>
+    <!--SALA-->
+    <div class="row">
+      <div class="col align-self-center mb-4 col-4 col-sm-3 offset-2 offset-sm-3">
+        <label for="nome">Sala: </label>
+        <!-- TODO -->
+        <!-- <span><strong> {{hora}} </strong></span> -->
+      </div>
+    </div>
+    <!--HORÁRIO INICIAL-->
+    <div class="row mb-3">
+      <div class="col align-self-center col-10 col-sm-6 offset-2 offset-sm-3">
+        <label for="cpf">Horário inicial: </label>
+      </div>
+    </div>
+    <!--HORÁRIO FINAL-->
+    <div class="row mb-3">
+      <div class="col align-self-center col-4 col-sm-2 offset-2 offset-sm-3">
+        <label for="telefone">Horário final: </label>
+      </div>
+      <!--  -->
+      <!-- <div class="row" *ngIf="this.novoServico.horaFinal">
+        <p>{{novoServico.horaFinal|date:'HH:mm'}}</p>
+      </div> -->
+      <div class="col align-self-center col-6 col-sm-4">
+        <button id="btn-salvar" style="background: linear-gradient(180deg, #4AC9FF 0%, #06B5EC 100%); color: #00314D; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.10);" class="btn" onclick="salvar()" type="button">
+          Registrar Horário
+        </button>
+      </div>
+    </div>
+    <!--SERVIÇO REALIZADO-->
+    <div class="row mb-3">
+      <div class="col align-self-center col-10 col-sm-6 offset-2 offset-sm-3">
+        <label for="dataNascimento">Serviço realizado: </label>
+        <!-- TODO -->
+        <!-- <ul>
+          <li *ngFor="let item of list">
+            <input type="checkbox" [(ngModel)]="item.checked">{{item.title}}
+          </li>
+        </ul> -->
+        <div class="valid-feedback">Válido.</div>
+        <div class="invalid-feedback">Selecione pelo menos um serviço.</div>
+      </div>
+    </div>
+    <!--OCORRÊNCIA-->
+    <div class="row mb-4">
+      <div class="col align-self-center col-10 col-sm-6 offset-2 offset-sm-3">
+        <label for="ctps">Ocorrência: </label>
+      </div>
+    </div>
+    <div class="row" *ngIf="this.mostrar">
+      <!-- TODO Implementar -->
+    </div>
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center col-8 col-sm-6 offset-2 offset-sm-3">
+        <button id="btn-salvar" style="background: linear-gradient(180deg, #4AC9FF 0%, #06B5EC 100%); color: #00314D; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.10);" class="btn" (click)="mostrarOcorrencia()" type="button">
+          Relatar Ocorrência
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center col-8 col-sm-6 offset-2 offset-sm-3">
+        <button id="btn-salvar" style="background: linear-gradient(180deg, #4AC9FF 0%, #06B5EC 100%); color: #00314D; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.10);" class="btn" onclick="salvar()" type="submit">
+          Registrar Serviço
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
