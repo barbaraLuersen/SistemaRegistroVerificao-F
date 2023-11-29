@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ServicoCadastroComponent {
 
+  public mostrar: boolean;
+
+  public mostrarOcorrencia(){
+    this.mostrar = !this.mostrar;
+  }
 }
