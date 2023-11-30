@@ -25,7 +25,8 @@
           <input
             class="form-control border border-0"
             style="background: #dcf2fc"
-            type="nome"
+            name="nome"
+            [(ngModel)]="seletor.nome"
           />
         </div>
       </div>
@@ -41,9 +42,10 @@
             name="cargo"
             [ngModelOptions]="{ standalone: true }"
             aria-placeholder="Selecione um cargo"
-            [(ngModel)]="usuario.cargo"
+            [(ngModel)]="seletor.cargo"
             required
           >
+            <option></option>
             <option *ngFor="let cargo of cargos" [ngValue]="cargo">
               {{ cargo }}
             </option>
@@ -59,9 +61,10 @@
             name="status"
             [ngModelOptions]="{ standalone: true }"
             aria-placeholder="Selecione um status"
-            [(ngModel)]="usuario.statusUsuario"
+            [(ngModel)]="seletor.statusUsuario"
             required
           >
+            <option></option>
             <option
               *ngFor="let statusUsuario of status"
               [ngValue]="statusUsuario"
@@ -86,7 +89,8 @@
           <input
             class="form-control border border-0"
             style="background: #dcf2fc"
-            type="de"
+            name="dataDesligamentoInicio"
+            [(ngModel)]="seletor.dataDesligamentoInicio"
           />
         </div>
         <div class="col col-sm-1 fw-medium" style="color: #021925">
@@ -96,7 +100,8 @@
           <input
             class="form-control border border-0"
             style="background: #dcf2fc"
-            type="ate"
+            name="dataDesligamentoFim"
+            [(ngModel)]="seletor.dataDesligamentoFim"
           />
         </div>
       </div>
@@ -236,7 +241,7 @@
         </button>
       </div>
 
-      <div class="col col-md-3 offset-md-3 justify-content-end">
+      <div class="col col-md-3 offset-md-3 d-flex justify-content-end">
         <button
           id="btn-voltar"
           class="btn fw-semibold"

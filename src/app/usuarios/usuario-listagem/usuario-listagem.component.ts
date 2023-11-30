@@ -1,3 +1,4 @@
+import { UsuarioCadastroComponent } from './../usuario-cadastro/usuario-cadastro.component';
 import { UsuarioService } from './../../shared/service/usuario.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -12,7 +13,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./usuario-listagem.component.scss'],
 })
 export class UsuarioListagemComponent implements OnInit {
-  public usuario: Usuario = new Usuario();
   public usuarios: Array<Usuario> = new Array();
   public seletor: UsuarioSeletor = new UsuarioSeletor();
   public cargos: string[] = [];
