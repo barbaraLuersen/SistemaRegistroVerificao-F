@@ -12,28 +12,24 @@
       >
         <label for="sala">Sala: </label>
         <!-- TODO -->
-        <!-- <span><strong> {{hora}} </strong></span> -->
+        <!-- <span><strong> {{servico.sala.numero}} </strong></span> -->
       </div>
     </div>
     <!--HORÁRIO INICIAL-->
     <div class="row mb-3">
       <div class="col align-self-center col-10 col-sm-6 offset-2 offset-sm-3">
         <label for="horario-inicial">Horário inicial: </label>
-      </div>
-      <div class="col align-self-center col-6 col-sm-4">
-        <span> {{ servico.dataHoraInicio }} </span>
+        <span> {{ servico.dataHoraInicio | date : "HH:mm" }} </span>
       </div>
     </div>
     <!--HORÁRIO FINAL-->
     <div class="row mb-3">
-      <div class="col align-self-center col-3 col-sm-2 offset-2 offset-sm-3">
+      <div class="col align-self-center col-4 col-sm-2 offset-2 offset-sm-3">
         <label for="horario-final">Horário final: </label>
+        <span *ngIf="servico.dataHoraFim"> {{ servico.dataHoraFim | date : "HH:mm" }} </span>
       </div>
-      <!-- <div *ngIf="!foiClicado">
-        <span>{{ servico.dataHoraFim | date : "HH:mm" }}</span>
-      </div> -->
       <!--  -->
-      <div class="col align-self-center col-5 col-sm-4">
+      <div class="col align-self-center col-5 col-sm-4" *ngIf="!servico.dataHoraFim">
         <button
           id="btn-salvar"
           style="
@@ -42,7 +38,7 @@
             box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
           "
           class="btn"
-          onclick="mostrarHoraFim()"
+          (click)="mostrarHoraFim()"
           type="button"
         >
           Registrar Horário
@@ -53,8 +49,8 @@
     <div class="row mb-3">
       <div class="col align-self-center col-10 col-sm-6 offset-2 offset-sm-3">
         <label for="servico-realizado">Serviço realizado: </label>
-          <div *ngFor="let item of atividades">
-            <input class="form-check-input" type="checkbox" [(ngModel)]="item.selecionado" />{{item.descricao}}
+          <div  *ngFor="let item of atividades">
+            <input class="form-check-input mx-2" type="checkbox" [ngModelOptions]="{ standalone: true }" [(ngModel)]="item.selecionado" />{{item.descricao}}
           </div>
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Selecione pelo menos um serviço.</div>

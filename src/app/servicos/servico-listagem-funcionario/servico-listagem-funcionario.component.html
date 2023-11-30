@@ -1,1 +1,201 @@
-<p>servico-listagem-funcionario works!</p>
+
+<!--</nav>-->
+
+<div class="row">
+  <div
+    class="col align-self-start col col-6 col-sm-6 offset-sm-1 offset-1 mt-4 mb-4"
+  >
+    <h3>Relatório diário</h3>
+  </div>
+  <div class="col col-sm-4 mt-4">
+    <a class="filtro" (click)="mostrarFiltros()"
+      ><i
+        ><img
+          class="mx-2"
+          src="../assets/filtro.svg"
+          alt="Icone de filtro" /></i
+    ></a>
+    <label class="fw-medium" style="color: #021925">Filtro</label>
+  </div>
+</div>
+
+<div class="row " *ngIf="this.mostrar">
+  <div class="container-fluid">
+    <form>
+      <div class="row mb-2 ">
+        <div class="col col-3 col-sm-3 offset-sm-1 offset-1">
+          <label>Sala: </label>
+        </div>
+        <div class="col col-sm-7 col-7">
+          <input class="form-control" type="nome" />
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col col-3 col-sm-3 offset-sm-1 offset-1">
+          <label>Serviço realizado: </label>
+        </div>
+        <div class="col col-sm-7 col-7">
+          <select
+            class="form-select"
+            name="cargo"
+            [ngModelOptions]="{ standalone: true }"
+            aria-placeholder="Selecione uma atividade"
+            [(ngModel)]="servicoSeletor"
+          >
+            <option *ngFor="let atividade of atividades" [ngValue]="atividades">
+              {{ atividade.descricao }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col col-md-3 offset-md-7 d-flex justify-content-center">
+          <button
+            id="btn-filtrar"
+            class="btn fw-semibold"
+            style="
+              background: linear-gradient(180deg, #4ac9ff 0%, #06b5ec 100%);
+              color: #00314d;
+              box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+            "
+            type="submit"
+          >
+            <!-- (click)="filtrarUsuario()" -->
+            Filtrar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-10 offset-1">
+    <table class="rounded-3 overflow-hidden table table-primary table-striped">
+      <thead>
+        <tr>
+          <th
+            scope="col"
+            class="text-center"
+            style="background-color: #0c62a0; color: #e9f8ff"
+          >
+            Sala
+          </th>
+          <th
+            scope="col"
+            class="text-center"
+            style="background-color: #0c62a0; color: #e9f8ff"
+          >
+            Atividade
+          </th>
+          <th
+            scope="col"
+            class="text-center"
+            style="background-color: #0c62a0; color: #e9f8ff"
+          >
+            Data de serviço
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servico of servicos">
+          <td class="text-center">{{ servico.sala.numero }}</td>
+          <td class="text-center">{{ servico.atividades }}</td>
+          <td class="text-center">
+            {{ servico.dataHoraFim | date : "dd/MM/yyyy" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--TODO Descobrir quais os links que devo colocar no href-->
+<div class="row">
+  <nav aria-label="Navegação">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          href="#"
+          aria-label="Anterior"
+          style="background-color: #dcf2fc"
+        >
+          <span aria-hidden="true" style="color: #00314d">&#9666;</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          style="color: #00314d; background-color: #caeaf8"
+          href="#"
+          >1</a
+        >
+      </li>
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          style="color: #00314d; background-color: #dcf2fc"
+          href="#"
+          >2</a
+        >
+      </li>
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          style="color: #00314d; background-color: #caeaf8"
+          href="#"
+          >3</a
+        >
+      </li>
+      <li class="page-item">
+        <a
+          class="page-link border border-0 rounded-circle"
+          href="#"
+          aria-label="Próximo"
+          style="background-color: #dcf2fc"
+        >
+          <span aria-hidden="true" style="color: #00314d">&#9656;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="row">
+  <div class="col col-3 col-sm-3 offset-sm-1 offset-1 justify-content-start">
+    <button
+      id="btn-exportar"
+      class="btn fw-semibold"
+      style="
+        background: linear-gradient(180deg, #4ac9ff 0%, #06b5ec 100%);
+        color: #00314d;
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+      "
+      onclick="exportarUsuario()"
+      type="submit"
+    >
+      Exportar
+    </button>
+  </div>
+
+  <div
+    class="col col-3 col-sm-3 offset-sm-4 offset-4 d-flex justify-content-end"
+  >
+    <button
+      id="btn-voltar"
+      class="btn fw-semibold"
+      style="
+        background: linear-gradient(180deg, #4ac9ff 0%, #06b5ec 100%);
+        color: #00314d;
+        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+      "
+      onclick="voltarUsuario()"
+      type="submit"
+    >
+      Voltar
+    </button>
+  </div>
+</div>

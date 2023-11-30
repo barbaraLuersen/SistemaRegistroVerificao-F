@@ -3,10 +3,12 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Atividade } from 'src/app/shared/model/atividade';
 import { Categoria } from 'src/app/shared/model/categoria';
+import { Sala } from 'src/app/shared/model/sala';
 import { Servico } from 'src/app/shared/model/servico';
 import { AtividadeService } from 'src/app/shared/service/atividade.service';
 import { CategoriaService } from 'src/app/shared/service/categoria.service';
 import { OcorrenciaService } from 'src/app/shared/service/ocorrencia.service';
+import { SalaService } from 'src/app/shared/service/sala.service';
 import { ServicoService } from 'src/app/shared/service/servico.service';
 import Swal from 'sweetalert2';
 
@@ -21,6 +23,7 @@ export class ServicoCadastroComponent {
     private ocorrenciaService: OcorrenciaService,
     private categoriaService: CategoriaService,
     public atividadeService: AtividadeService,
+    public salaService: SalaService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -29,6 +32,7 @@ export class ServicoCadastroComponent {
   public servico: Servico = new Servico();
   public categorias: Categoria[];
   public atividades: Atividade[];
+  public sala: Sala;
 
   public mostrar: boolean = false;
   public esconder: boolean = true;
@@ -42,7 +46,14 @@ export class ServicoCadastroComponent {
     this.esconder = !this.esconder;
   }
 
+  public mostrarHoraFim() {
+    this.servico.dataHoraFim = new Date();
+  }
+
   ngOnInit(): void {
+    this.servico.dataHoraInicio = new Date();
+    // TODO
+    // this.servico.sala.numero = this.sala.numero;
     this.categoriaService.listarTodos().subscribe(
       (resultado) => {
         this.categorias = resultado;
