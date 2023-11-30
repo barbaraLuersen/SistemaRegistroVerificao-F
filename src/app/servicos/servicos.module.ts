@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ServicosRoutingModule } from './servicos-routing.module';
 import { ServicoCadastroComponent } from './servico-cadastro/servico-cadastro.component';
@@ -14,6 +15,6 @@ import { ServicoListagemFuncionarioComponent } from './servico-listagem-funciona
     ServicoListagemGerenciaComponent,
     ServicoListagemFuncionarioComponent,
   ],
-  imports: [CommonModule, ServicosRoutingModule],
+  imports: [CommonModule, ServicosRoutingModule, FormsModule],
 })
 export class ServicosModule {}
