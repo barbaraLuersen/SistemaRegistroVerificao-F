@@ -42,4 +42,8 @@ export class UsuarioService {
   listarNiveis(): Observable<Array<string>> {
     return this.httpClient.get<Array<string>>(this.API + '/niveisAcesso');
   }
+
+  listarStatus(): Observable<Array<string>> {
+    return this.httpClient.get<Array<string>>(this.API + '/status');
+  }
 }

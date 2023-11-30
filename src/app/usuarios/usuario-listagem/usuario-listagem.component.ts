@@ -16,6 +16,15 @@ export class UsuarioListagemComponent implements OnInit {
   public usuarios: Array<Usuario> = new Array();
   public seletor: UsuarioSeletor = new UsuarioSeletor();
   public cargos: string[] = [];
+  public status: string[] = [];
+
+  public mostrar: boolean;
+  public esconder: boolean;
+
+  public mostrarFiltros() {
+    this.mostrar = !this.mostrar;
+    this.esconder = !this.esconder;
+  }
 
   @ViewChild('ngForm')
   public ngForm: NgForm;
@@ -33,6 +42,14 @@ export class UsuarioListagemComponent implements OnInit {
       },
       (erro) => {
         Swal.fire('Erro', 'Erro ao buscar os cargos: ' + erro, 'error');
+      }
+    );
+    this.usuarioService.listarStatus().subscribe(
+      (resultado) => {
+        this.status = resultado;
+      },
+      (erro) => {
+        Swal.fire('Erro', 'Erro ao buscar os status: ' + erro, 'error');
       }
     );
   }
