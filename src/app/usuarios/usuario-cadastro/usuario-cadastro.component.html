@@ -1,7 +1,6 @@
 <br />
 <div class="container-fluid">
   <form #ngForm="ngForm" novalidate>
-
     <div class="row mb-4 mt-4">
       <div
         class="col align-self-start col-md-6 offset-md-3"
@@ -25,8 +24,8 @@
           "
           class="form-control border border-0"
           style="background: #e9f8ff"
-          minlength="2"
           name="nome"
+          minlength="3"
           [(ngModel)]="usuario.nome"
           required
         />
@@ -104,7 +103,7 @@
       <div class="col col-sm-4">
         <input
           [ngClass]="
-            !usuario.dataNacimento && ngForm.submitted
+            !usuario.dataNascimento && ngForm.submitted
               ? 'form-control border border-danger'
               : 'form-control'
           "
@@ -113,11 +112,12 @@
           placeholder="dd/mm/aaaa"
           minlength="8"
           name="dataNascimento"
-          [(ngModel)]="usuario.dataNacimento"
+          type="date"
+          [(ngModel)]="usuario.dataNascimento"
           required
         />
         <div
-          *ngIf="ngForm.submitted && !this.usuario.dataNacimento"
+          *ngIf="ngForm.submitted && !this.usuario.dataNascimento"
           class="text text-danger"
         >
           Data inválida!
@@ -271,7 +271,7 @@
     </div>
 
     <div class="row mb-4">
-      <div class="col col-md-3 offset-md-7 d-flex justify-content-center">
+      <div class="col col-md-3 offset-md-6 d-flex justify-content-end">
         <button
           id="btn-salvar"
           class="btn fw-semibold"
@@ -280,7 +280,7 @@
             color: #00314d;
             box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
           "
-          onclick="inserirUsuario()"
+          (click)="inserirUsuario()"
           type="submit"
         >
           Cadastrar Usuário
