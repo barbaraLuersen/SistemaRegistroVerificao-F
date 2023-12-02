@@ -26,7 +26,7 @@ export class ServicoListagemFuncionarioComponent {
     private route: ActivatedRoute
   ) {}
 
-  public servicoSeletor: ServicoSeletor;
+  public seletor: ServicoSeletor = new ServicoSeletor();
   public servicos: Servico[] = [];
   public atividades: Atividade[];
   public sala: Sala;
@@ -46,6 +46,15 @@ export class ServicoListagemFuncionarioComponent {
   ngOnInit(): void {
     // TODO
     // this.servico.sala.numero = this.sala.numero;
+    this.servicoService.listarTodos().subscribe(
+      (resultado) => {
+        this.servicos = resultado;
+      },
+      (erro) => {
+        Swal.fire('Erro', 'Erro ao buscar as categorias de ocorrências: ' + erro, 'error');
+      }
+    );
+
     this.atividadeService.listarTodos().subscribe(
       (resultado) => {
         this.atividades = resultado;
@@ -73,6 +82,17 @@ export class ServicoListagemFuncionarioComponent {
       },
       (erro) => {
         Swal.fire('Erro', 'Erro ao listar os serviços: ' + erro, 'error');
+      }
+    );
+  }
+
+  filtrarServico() {
+    this.servicoService.listarComSeletor(this.seletor).subscribe(
+      (resultado) => {
+        this.servicos = resultado;
+      },
+      (erro) => {
+        console.log('Erro ao buscar servicos', erro);
       }
     );
   }

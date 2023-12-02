@@ -28,7 +28,6 @@ export class ServicoCadastroComponent {
     private route: ActivatedRoute
   ) {}
 
-
   public servico: Servico = new Servico();
   public categorias: Categoria[];
   public atividades: Atividade[];
@@ -74,6 +73,7 @@ export class ServicoCadastroComponent {
   }
 
   inserirServicoPrestado() {
+    this.servico.dataHoraFim = new Date();
     this.servicoService.inserir(this.servico).subscribe(
       (sucesso) => {
         Swal.fire('Sucesso', 'Serviço cadastrado!', 'success');
