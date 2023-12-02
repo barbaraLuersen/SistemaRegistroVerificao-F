@@ -52,6 +52,19 @@ export class UsuarioListagemComponent implements OnInit {
         Swal.fire('Erro', 'Erro ao buscar os status: ' + erro, 'error');
       }
     );
+
+    this.buscarTodos();
+  }
+
+  buscarTodos() {
+    this.usuarioService.listarTodos().subscribe(
+      (resultado) => {
+        this.usuarios = resultado;
+      },
+      (erro) => {
+        console.log('Erro ao buscar usuarios', erro);
+      }
+    );
   }
 
   filtrarUsuario() {

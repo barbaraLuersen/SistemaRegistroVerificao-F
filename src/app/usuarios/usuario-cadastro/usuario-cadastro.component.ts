@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/shared/model/usuario';
 import { UsuarioService } from './../../shared/service/usuario.service';
 import Swal from 'sweetalert2';
+import { FormControl } from '@angular/forms';
+import { createMask } from '@ngneat/input-mask';
 
 @Component({
   selector: 'app-usuario-cadastro',
@@ -17,6 +19,15 @@ export class UsuarioCadastroComponent implements OnInit {
 
   @ViewChild('ngForm')
   public ngForm: NgForm;
+
+  mascaraCpf = createMask('999.999.999-99');
+  cpf = new FormControl('');
+
+  mascaraTelefone = createMask('(99) 99999-9999');
+  telefone = new FormControl('');
+
+  mascaraCtps = createMask('9999999/9999');
+  ctps = new FormControl('');
 
   constructor(
     private usuarioService: UsuarioService,
@@ -49,13 +60,18 @@ export class UsuarioCadastroComponent implements OnInit {
   }
 
   inserirUsuario() {
+    //TODO Fazer replace dos campos cpf, telefone e ctpf e lembrar de voltar o tamanho do atributo no banco de dados
     this.usuarioService.inserir(this.usuario).subscribe(
       (sucesso) => {
         Swal.fire('Sucesso', 'Usuario cadastrado!', 'success');
         this.usuario = new Usuario();
       },
       (erro) => {
-        Swal.fire('Erro', 'Erro ao cadastrar usuario: ' + erro, 'error');
+        Swal.fire(
+          'Erro',
+          'Erro ao cadastrar usuario: ' + 'preencha todos os campos',
+          'error'
+        );
       }
     );
   }
