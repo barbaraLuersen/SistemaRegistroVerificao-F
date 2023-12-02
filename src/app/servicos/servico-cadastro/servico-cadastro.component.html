@@ -22,29 +22,6 @@
         <span> {{ servico.dataHoraInicio | date : "HH:mm" }} </span>
       </div>
     </div>
-    <!--HORÁRIO FINAL-->
-    <div class="row mb-3">
-      <div class="col align-self-center col-4 col-sm-2 offset-2 offset-sm-3">
-        <label for="horario-final">Horário final: </label>
-        <span *ngIf="servico.dataHoraFim"> {{ servico.dataHoraFim | date : "HH:mm" }} </span>
-      </div>
-      <!--  -->
-      <div class="col align-self-center col-5 col-sm-4" *ngIf="!servico.dataHoraFim">
-        <button
-          id="btn-salvar"
-          style="
-            background: linear-gradient(180deg, #4ac9ff 0%, #06b5ec 100%);
-            color: #00314d;
-            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
-          "
-          class="btn"
-          (click)="mostrarHoraFim()"
-          type="button"
-        >
-          Registrar Horário
-        </button>
-      </div>
-    </div>
     <!--SERVIÇO REALIZADO-->
     <div class="row mb-3">
       <div class="col align-self-center col-10 col-sm-6 offset-2 offset-sm-3">
@@ -73,6 +50,7 @@
           [(ngModel)]="categorias"
           required
         >
+          <option></option>
           <option *ngFor="let categoria of categorias" [ngValue]="categoria">
             {{ categoria.nome }}
           </option>

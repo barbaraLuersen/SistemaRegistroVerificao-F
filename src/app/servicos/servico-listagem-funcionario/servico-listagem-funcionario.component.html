@@ -1,4 +1,3 @@
-
 <!--</nav>-->
 
 <div class="row">
@@ -19,15 +18,15 @@
   </div>
 </div>
 
-<div class="row " *ngIf="this.mostrar">
+<div class="row" *ngIf="this.mostrar">
   <div class="container-fluid">
     <form>
-      <div class="row mb-2 ">
+      <div class="row mb-2">
         <div class="col col-3 col-sm-3 offset-sm-1 offset-1">
           <label>Sala: </label>
         </div>
         <div class="col col-sm-7 col-7">
-          <input class="form-control" type="nome" />
+          <input class="form-control" [(ngModel)]="seletor.sala" name="sala" />
         </div>
       </div>
 
@@ -38,11 +37,12 @@
         <div class="col col-sm-7 col-7">
           <select
             class="form-select"
-            name="cargo"
+            name="atividade"
             [ngModelOptions]="{ standalone: true }"
             aria-placeholder="Selecione uma atividade"
-            [(ngModel)]="servicoSeletor"
+            [(ngModel)]="seletor.atividade"
           >
+            <option></option>
             <option *ngFor="let atividade of atividades" [ngValue]="atividades">
               {{ atividade.descricao }}
             </option>
@@ -61,8 +61,8 @@
               box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
             "
             type="submit"
+            (click)="filtrarServico()"
           >
-            <!-- (click)="filtrarUsuario()" -->
             Filtrar
           </button>
         </div>
@@ -102,7 +102,7 @@
       <tbody>
         <tr *ngFor="let servico of servicos">
           <td class="text-center">{{ servico.sala.numero }}</td>
-          <td class="text-center">{{ servico.atividades }}</td>
+          <td class="text-center" *ngFor="let atividade of servico.atividades">{{ atividade.descricao }}</td>
           <td class="text-center">
             {{ servico.dataHoraFim | date : "dd/MM/yyyy" }}
           </td>
