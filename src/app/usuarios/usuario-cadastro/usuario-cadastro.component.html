@@ -51,9 +51,10 @@
           "
           class="form-control border border-0"
           style="background: #e9f8ff"
-          minlength="11"
           placeholder="000.000.000-00"
           name="cpf"
+          [inputMask]="mascaraCpf"
+          [formControl]="cpf"
           [(ngModel)]="usuario.cpf"
           required
         />
@@ -80,7 +81,8 @@
           "
           class="form-control border border-0"
           style="background: #e9f8ff"
-          minlength="11"
+          [inputMask]="mascaraTelefone"
+          [formControl]="telefone"
           placeholder="(00) 00000-0000"
           name="telefone"
           [(ngModel)]="usuario.telefone"
@@ -139,7 +141,8 @@
           class="form-control border border-0"
           style="background: #e9f8ff"
           placeholder="0000000/0000"
-          minlength="11"
+          [inputMask]="mascaraCtps"
+          [formControl]="ctps"
           name="ctps"
           [(ngModel)]="usuario.ctps"
           required
@@ -152,7 +155,6 @@
         </div>
       </div>
     </div>
-    <!--TODO aria-label não está funcionando e quando coloco um style aq ele some aquela setinha do campo de seleção-->
     <!--NIVEL DE ACESSO-->
     <div class="row mb-4">
       <div class="col col-sm-2 offset-sm-3" style="color: #021925">
@@ -184,7 +186,6 @@
         </div>
       </div>
     </div>
-    <!--TODO aria-label não está funcionando e quando coloco um style aq ele some aquela setinha do campo de seleção-->
     <!--CARGO-->
     <div class="row mb-4" style="color: #021925">
       <div class="col col-sm-2 offset-sm-3">
@@ -258,6 +259,7 @@
           style="background: #e9f8ff"
           minlength="8"
           name="senha"
+          type="password"
           [(ngModel)]="usuario.senha"
           required
         />

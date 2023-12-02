@@ -8,6 +8,8 @@ import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.componen
 import { UsuarioListagemComponent } from './usuario-listagem/usuario-listagem.component';
 import { UsuarioEdicaoComponent } from './usuario-edicao/usuario-edicao.component';
 import { UsuarioAfastamentoComponent } from './usuario-afastamento/usuario-afastamento.component';
+import { InputMaskModule } from '@ngneat/input-mask';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,12 @@ import { UsuarioAfastamentoComponent } from './usuario-afastamento/usuario-afast
     UsuarioEdicaoComponent,
     UsuarioAfastamentoComponent,
   ],
-  imports: [CommonModule, UsuariosRoutingModule, FormsModule],
+  imports: [
+    CommonModule,
+    UsuariosRoutingModule,
+    FormsModule,
+    InputMaskModule,
+    ReactiveFormsModule,
+  ],
 })
 export class UsuariosModule {}

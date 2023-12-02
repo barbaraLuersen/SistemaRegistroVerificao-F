@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { InputMaskModule } from '@ngneat/input-mask';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NgSelectModule,
     SweetAlert2Module.forRoot(), //https://github.com/sweetalert2/ngx-sweetalert2
     FontAwesomeModule,
+    InputMaskModule.forRoot({ inputSelector: 'input', isAsync: true }),
   ],
   providers: [],
   bootstrap: [AppComponent],
