@@ -8,6 +8,7 @@ import { ServicoOcorrenciaComponent } from './servico-ocorrencia/servico-ocorren
 import { ServicoListagemGerenciaComponent } from './servico-listagem-gerencia/servico-listagem-gerencia.component';
 import { ServicoListagemFuncionarioComponent } from './servico-listagem-funcionario/servico-listagem-funcionario.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { QrCodeComponent } from './qr-code/qr-code.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     ServicoOcorrenciaComponent,
     ServicoListagemGerenciaComponent,
     ServicoListagemFuncionarioComponent,
+    QrCodeComponent,
   ],
   imports: [CommonModule, ServicosRoutingModule, FormsModule, ZXingScannerModule],
 })

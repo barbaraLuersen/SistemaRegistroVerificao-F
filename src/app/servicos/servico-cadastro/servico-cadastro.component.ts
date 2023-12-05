@@ -40,6 +40,8 @@ export class ServicoCadastroComponent {
   public esconder: boolean = true;
   public horaFim: boolean;
 
+  public idSala: number;
+
   @ViewChild('ngForm')
   public ngForm: NgForm;
 
@@ -63,8 +65,7 @@ export class ServicoCadastroComponent {
 
   ngOnInit(): void {
     this.servico.dataHoraInicio = new Date();
-    // TODO
-    // this.servico.sala.numero = this.sala.numero;
+    // TODO Registrar a sala no banco
     this.atividadeService.listarTodos().subscribe(
       (resultado) => {
         this.atividades = resultado;
@@ -74,10 +75,30 @@ export class ServicoCadastroComponent {
       }
     );
     this.servico.ocorrencia.categorias = new Array();
+
+    this.route.params.subscribe(params => {
+      this.idSala = params['idSala']});
+
+      if(this.idSala){
+        this.buscarSala();
+      }
+  }
+
+  buscarSala() {
+    this.salaService.pesquisarPorId(this.idSala).subscribe(
+      resultado => {
+        this.sala = resultado;
+      },
+      erro => {
+        Swal.fire("Erro", "Erro ao buscar a sala com id ("
+                      + this.idSala + ") : " + erro, 'error');
+      }
+    );
   }
 
   inserirServicoPrestado() {
     this.servico.dataHoraFim = new Date();
+    this.servico.sala = this.sala;
     this.servico.atividades = this.selecionados;
     this.servico.ocorrencia.categorias.push(this.categoriaSelecionada);
     this.servicoService.inserir(this.servico).subscribe(
@@ -89,6 +110,10 @@ export class ServicoCadastroComponent {
         Swal.fire('Erro', 'Erro ao cadastrar o serviço: ' + erro, 'error');
       }
     );
+  }
+
+  salvarOcorrencia(){
+
   }
 
   get selecionados() {
