@@ -7,6 +7,7 @@ import { ServicoCadastroComponent } from './servico-cadastro/servico-cadastro.co
 import { ServicoOcorrenciaComponent } from './servico-ocorrencia/servico-ocorrencia.component';
 import { ServicoListagemGerenciaComponent } from './servico-listagem-gerencia/servico-listagem-gerencia.component';
 import { ServicoListagemFuncionarioComponent } from './servico-listagem-funcionario/servico-listagem-funcionario.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,6 @@ import { ServicoListagemFuncionarioComponent } from './servico-listagem-funciona
     ServicoListagemGerenciaComponent,
     ServicoListagemFuncionarioComponent,
   ],
-  imports: [CommonModule, ServicosRoutingModule, FormsModule],
+  imports: [CommonModule, ServicosRoutingModule, FormsModule, ZXingScannerModule],
 })
 export class ServicosModule {}

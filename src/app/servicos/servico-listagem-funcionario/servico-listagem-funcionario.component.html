@@ -43,7 +43,7 @@
             [(ngModel)]="seletor.atividade"
           >
             <option></option>
-            <option *ngFor="let atividade of atividades" [ngValue]="atividades">
+            <option *ngFor="let atividade of atividades" >
               {{ atividade.descricao }}
             </option>
           </select>

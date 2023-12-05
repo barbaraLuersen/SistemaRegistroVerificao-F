@@ -9,6 +9,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { InputMaskModule } from '@ngneat/input-mask';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { InputMaskModule } from '@ngneat/input-mask';
     SweetAlert2Module.forRoot(), //https://github.com/sweetalert2/ngx-sweetalert2
     FontAwesomeModule,
     InputMaskModule.forRoot({ inputSelector: 'input', isAsync: true }),
+    ZXingScannerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,5 @@
+<zxing-scanner></zxing-scanner>
+
 <div class="container-fluid">
   <form>
     <div class="row mt-4 mb-4">
@@ -27,7 +29,7 @@
       <div class="col align-self-center col-10 col-sm-6 offset-2 offset-sm-3">
         <label for="servico-realizado">Serviço realizado: </label>
           <div  *ngFor="let item of atividades">
-            <input class="form-check-input mx-2" type="checkbox" [ngModelOptions]="{ standalone: true }" [(ngModel)]="item.selecionado" />{{item.descricao}}
+            <input class="form-check-input mx-2" name="atividade" type="checkbox" [ngModelOptions]="{ standalone: true }" [(ngModel)]="item.selecionado" />{{item.descricao}}
           </div>
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Selecione pelo menos um serviço.</div>
@@ -47,7 +49,7 @@
           style="background: #e9f8ff"
           name="categorias"
           [ngModelOptions]="{ standalone: true }"
-          [(ngModel)]="categorias"
+          [(ngModel)]="categoriaSelecionada"
           required
         >
           <option></option>
@@ -57,9 +59,11 @@
         </select>
         <textarea
           class="form-control col-sm-6 my-2"
+          name="descricao-categoria"
           rows="8"
           id="descricao-categoria"
           placeholder="Descreva a Ocorrência"
+          [(ngModel)]="ocorrencia.descricao"
         ></textarea>
       </div>
       <div class="row mb-4 mt-2">
@@ -128,7 +132,7 @@
             box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
           "
           class="btn"
-          onclick="salvar()"
+          (click)="inserirServicoPrestado()"
           type="submit"
         >
           Registrar Serviço
