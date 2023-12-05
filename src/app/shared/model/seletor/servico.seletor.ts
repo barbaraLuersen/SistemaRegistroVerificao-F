@@ -1,4 +1,6 @@
-export class ServicoSeletor {
+import { BaseSeletor } from './base.seletor';
+
+export class ServicoSeletor extends BaseSeletor {
   sala: string;
   menorDataHoraInicio: Date;
   menorDataHoraFim: Date;

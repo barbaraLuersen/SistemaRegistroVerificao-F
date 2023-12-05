@@ -36,6 +36,9 @@ export class UsuarioListagemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // this.seletor.limite = 5;
+    // this.seletor.pagina = ;
+
     this.usuarioService.listarCargos().subscribe(
       (resultado) => {
         this.cargos = resultado;
@@ -53,19 +56,19 @@ export class UsuarioListagemComponent implements OnInit {
       }
     );
 
-    this.buscarTodos();
+    //this.buscarTodos();
   }
 
-  buscarTodos() {
-    this.usuarioService.listarTodos().subscribe(
-      (resultado) => {
-        this.usuarios = resultado;
-      },
-      (erro) => {
-        console.log('Erro ao buscar usuarios', erro);
-      }
-    );
-  }
+  // buscarTodos() {
+  //   this.usuarioService.listarTodos().subscribe(
+  //    (resultado) => {
+  //     this.usuarios = resultado;
+  //   },
+  //   (erro) => {
+  //     console.log('Erro ao buscar usuarios', erro);
+  //  }
+  //   );
+  //  }
 
   filtrarUsuario() {
     this.usuarioService.listarComSeletor(this.seletor).subscribe(
@@ -79,7 +82,7 @@ export class UsuarioListagemComponent implements OnInit {
   }
 
   voltarUsuario() {
-    this.router.navigate(['/usuarios']);
+    this.router.navigate(['/dashboard/']);
   }
 
   exportarUsuario() {}
