@@ -16,7 +16,7 @@ export class QrCodeComponent {
 
     onCodeResult(resultString: string) {
       this.qrResultString = resultString;
-      this.router.navigate([{qrValue: this.qrResultString}]);
+      this.router.navigate([this.qrResultString]);
     }
 
 }

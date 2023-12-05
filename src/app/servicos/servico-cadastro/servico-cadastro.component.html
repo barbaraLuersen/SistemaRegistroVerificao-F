@@ -11,7 +11,9 @@
         class="col align-self-center mb-4 col-4 col-sm-3 offset-2 offset-sm-3"
       >
         <label for="sala">Sala: </label>
-        <span><strong> {{sala.numero}} </strong></span>
+        <span
+          ><strong> {{ sala.numero }} </strong></span
+        >
       </div>
     </div>
     <!--HORÁRIO INICIAL-->
@@ -25,15 +27,21 @@
     <div class="row mb-3">
       <div class="col align-self-center col-10 col-sm-6 offset-2 offset-sm-3">
         <label for="servico-realizado">Serviço realizado: </label>
-          <div  *ngFor="let item of atividades">
-            <input class="form-check-input mx-2" name="atividade" type="checkbox" [ngModelOptions]="{ standalone: true }" [(ngModel)]="item.selecionado" />{{item.descricao}}
-          </div>
+        <div *ngFor="let item of atividades">
+          <input
+            class="form-check-input mx-2"
+            name="atividade"
+            type="checkbox"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="item.selecionado"
+          />{{ item.descricao }}
+        </div>
         <div class="valid-feedback">Válido.</div>
         <div class="invalid-feedback">Selecione pelo menos um serviço.</div>
       </div>
     </div>
     <!--OCORRÊNCIA-->
-    <div class="row mb-4">
+    <div class="row mb-2 mt-4">
       <div class="col align-self-center col-10 col-sm-6 offset-2 offset-sm-3">
         <label for="ocorrencia">Ocorrência: </label>
       </div>
@@ -65,20 +73,18 @@
       </div>
       <div class="row mb-4 mt-2">
         <div
-          class="col d-flex justify-content-center col-5 col-sm-5 offset-3 offset-sm-3"
-        >
+          class="col d-flex justify-content-center col-5 col-sm-5 offset-3 offset-sm-3">
           <button
-            id="btn-salvar-ocorrencia"
+            id="btn-registrar-servico"
             style="
               background: linear-gradient(180deg, #4ac9ff 0%, #06b5ec 100%);
               color: #00314d;
               box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
             "
             class="btn"
-            (click)="salvarOcorrencia()"
-            type="button"
-          >
-            Salvar Ocorrência
+            (click)="inserirServicoPrestado()"
+            type="submit">
+            Registrar Serviço
           </button>
         </div>
         <div class="col d-flex justify-content-center col-1 col-sm-1">
@@ -117,7 +123,7 @@
         </button>
       </div>
     </div>
-    <div class="row">
+    <div class="row" [hidden]="!esconder">
       <div
         class="col d-flex justify-content-center col-8 col-sm-6 offset-2 offset-sm-3"
       >
@@ -136,6 +142,6 @@
         </button>
       </div>
     </div>
-    <div style="height: 120px;"></div>
+    <div style="height: 120px"></div>
   </form>
 </div>
