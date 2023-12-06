@@ -59,12 +59,12 @@ export class UsuarioCadastroComponent implements OnInit {
     );
   }
 
-  inserirUsuario() {
-    //TODO Fazer replace dos campos cpf, telefone e ctpf e lembrar de voltar o tamanho do atributo no banco de dados
+  inserirUsuario(ngForm: NgForm) {
     this.usuarioService.inserir(this.usuario).subscribe(
       (sucesso) => {
         Swal.fire('Sucesso', 'Usuario cadastrado!', 'success');
         this.usuario = new Usuario();
+        //this.limparFormulario();
       },
       (erro) => {
         Swal.fire(
@@ -75,4 +75,8 @@ export class UsuarioCadastroComponent implements OnInit {
       }
     );
   }
+
+  //limparFormulario() {
+  //this.ngForm. = false;
+  //}
 }

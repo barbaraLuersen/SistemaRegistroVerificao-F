@@ -2,13 +2,13 @@
   <form>
     <div class="row mb-4">
       <div
-        class="col align-self-start col-md-4 offset-md-3"
+        class="col align-self-start col-md-4 offset-md-3 mt-4"
         style="color: #021925"
       >
         <h3>CONSULTA DE FUNCIONÁRIOS</h3>
       </div>
       <!--FILTRO-->
-      <div class="col col-md-4">
+      <div class="col col-md-4 mt-4">
         <a class="filtro" (click)="mostrarFiltros()"
           ><i><img src="../assets/filtro.svg" alt="Icone de filtro" /></i
         ></a>
@@ -130,6 +130,7 @@
       <div class="col-sm-6 offset-sm-3">
         <table
           class="rounded-3 overflow-hidden table table-primary table-striped"
+          id="tabela-usuarios"
         >
           <thead>
             <tr>
@@ -176,9 +177,9 @@
         </table>
       </div>
     </div>
-
-    <!--TODO Descobrir quais os links que devo colocar no href-->
-    <div class="row mb-4">
+    <!--TODO Fazer funcionar a paginação futuramente-->
+    <!--PAGINAÇÃO-->
+    <!--<div class="row mb-4">
       <nav aria-label="Navegação">
         <ul class="pagination justify-content-center">
           <li class="page-item">
@@ -223,6 +224,7 @@
         </ul>
       </nav>
     </div>
+  -->
 
     <div class="row mb-4">
       <div class="col col-md-3 offset-md-3 justify-content-start">
@@ -234,7 +236,7 @@
             color: #00314d;
             box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
           "
-          (click)="exportarUsuario()"
+          (click)="exportarPlanilhaUsuario()"
           type="submit"
         >
           Exportar
