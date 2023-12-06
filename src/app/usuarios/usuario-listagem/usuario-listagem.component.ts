@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioSeletor } from 'src/app/shared/model/seletor/usuario.seletor';
 import { Usuario } from 'src/app/shared/model/usuario';
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-usuario-listagem',
@@ -36,6 +37,9 @@ export class UsuarioListagemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // this.seletor.limite = 5;
+    // this.seletor.pagina = ;
+
     this.usuarioService.listarCargos().subscribe(
       (resultado) => {
         this.cargos = resultado;
@@ -79,8 +83,17 @@ export class UsuarioListagemComponent implements OnInit {
   }
 
   voltarUsuario() {
-    this.router.navigate(['/usuarios']);
+    this.router.navigate(['/dashboard/']);
   }
 
-  exportarUsuario() {}
+  fileName = 'ExcleSheet.xlsx';
+  exportarPlanilhaUsuario() {
+    let data = document.getElementById('tabela-usuarios');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(data);
+
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Planilha');
+
+    XLSX.writeFile(wb, this.fileName);
+  }
 }

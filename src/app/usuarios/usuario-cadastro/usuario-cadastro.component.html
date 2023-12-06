@@ -18,8 +18,9 @@
       <div class="col col-sm-4">
         <input
           [ngClass]="
-            !usuario.nome && ngForm.submitted
-              ? 'form-control border border-danger'
+            (!usuario.nome || (usuario.nome && usuario.nome.length < 3)) &&
+            ngForm.submitted
+              ? 'form-control is-invalid'
               : 'form-control'
           "
           class="form-control border border-0"
@@ -282,7 +283,7 @@
             color: #00314d;
             box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
           "
-          (click)="inserirUsuario()"
+          (click)="inserirUsuario(ngForm)"
           type="submit"
         >
           Cadastrar Usuário
