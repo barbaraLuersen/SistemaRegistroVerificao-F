@@ -10,5 +10,5 @@ export class Servico {
   dataHoraFim: Date;
   usuario: Usuario;
   atividades: Atividade[];
-  ocorrencia: Ocorrencia;
+  ocorrencia: Ocorrencia = new Ocorrencia();
 }

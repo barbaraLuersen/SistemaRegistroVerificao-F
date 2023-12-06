@@ -63,15 +63,6 @@ export class ServicoListagemFuncionarioComponent {
         Swal.fire('Erro', 'Erro ao buscar as categorias de ocorrências: ' + erro, 'error');
       }
     );
-
-    this.atividadeService.listarTodos().subscribe(
-      (resultado) => {
-        this.atividades = resultado;
-      },
-      (erro) => {
-        Swal.fire('Erro', 'Erro ao buscar as atividades de serviços: ' + erro, 'error');
-      }
-    );
   }
 
   listarServicoPrestado() {
@@ -92,7 +83,7 @@ export class ServicoListagemFuncionarioComponent {
         this.servicos = resultado;
       },
       (erro) => {
-        console.log('Erro ao buscar servicos', erro);
+        console.log('Erro ao buscar servicos', erro.error);
       }
     );
   }

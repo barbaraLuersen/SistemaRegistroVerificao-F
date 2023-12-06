@@ -27,6 +27,7 @@ export class ServicoService {
   listarComSeletor(seletor: ServicoSeletor) {
     return this.httpClient.post<Array<Servico>>(this.API + '/filtro', seletor);
   }
+
   excluir(id: number): Observable<Servico> {
     return this.httpClient.delete<Servico>(this.API + '/' + id);
   }
