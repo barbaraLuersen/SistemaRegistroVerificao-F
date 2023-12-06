@@ -18,7 +18,6 @@
       <div class="col col-sm-4">
         <input
           [ngClass]="
-             //Tentativa de validação do nome com no máximo 3 caracteres
             (!usuario.nome || (usuario.nome && usuario.nome.length < 3)) &&
             ngForm.submitted
               ? 'form-control is-invalid'

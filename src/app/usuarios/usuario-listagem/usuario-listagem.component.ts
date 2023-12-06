@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioSeletor } from 'src/app/shared/model/seletor/usuario.seletor';
 import { Usuario } from 'src/app/shared/model/usuario';
 import Swal from 'sweetalert2';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-usuario-listagem',
@@ -56,19 +57,19 @@ export class UsuarioListagemComponent implements OnInit {
       }
     );
 
-    //this.buscarTodos();
+    this.buscarTodos();
   }
 
-  // buscarTodos() {
-  //   this.usuarioService.listarTodos().subscribe(
-  //    (resultado) => {
-  //     this.usuarios = resultado;
-  //   },
-  //   (erro) => {
-  //     console.log('Erro ao buscar usuarios', erro);
-  //  }
-  //   );
-  //  }
+  buscarTodos() {
+    this.usuarioService.listarTodos().subscribe(
+      (resultado) => {
+        this.usuarios = resultado;
+      },
+      (erro) => {
+        console.log('Erro ao buscar usuarios', erro);
+      }
+    );
+  }
 
   filtrarUsuario() {
     this.usuarioService.listarComSeletor(this.seletor).subscribe(
@@ -85,5 +86,14 @@ export class UsuarioListagemComponent implements OnInit {
     this.router.navigate(['/dashboard/']);
   }
 
-  exportarUsuario() {}
+  fileName = 'ExcleSheet.xlsx';
+  exportarPlanilhaUsuario() {
+    let data = document.getElementById('tabela-usuarios');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(data);
+
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Planilha');
+
+    XLSX.writeFile(wb, this.fileName);
+  }
 }
