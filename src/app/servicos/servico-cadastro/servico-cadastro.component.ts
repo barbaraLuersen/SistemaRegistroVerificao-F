@@ -98,6 +98,16 @@ export class ServicoCadastroComponent {
 
   inserirServicoPrestado() {
     this.servico.dataHoraFim = new Date();
+
+    const localStartTime = new Date(this.servico.dataHoraInicio);
+    const localEndTime = new Date(this.servico.dataHoraFim);
+
+    // Ajuste de timezone para menos 3 horas
+    localStartTime.setHours(localStartTime.getHours() - 3);
+    localEndTime.setHours(localEndTime.getHours() - 3);
+    this.servico.dataHoraInicio = localStartTime;
+    this.servico.dataHoraFim = localEndTime;
+
     this.servico.sala = this.sala;
     this.servico.atividades = this.selecionados;
     this.servico.ocorrencia.categorias.push(this.categoriaSelecionada);
@@ -110,10 +120,6 @@ export class ServicoCadastroComponent {
         Swal.fire('Erro', 'Erro ao cadastrar o serviço: ' + erro, 'error');
       }
     );
-  }
-
-  salvarOcorrencia(){
-
   }
 
   get selecionados() {

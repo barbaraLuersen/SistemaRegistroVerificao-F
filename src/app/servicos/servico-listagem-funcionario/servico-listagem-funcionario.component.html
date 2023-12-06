@@ -98,6 +98,7 @@
               scope="col"
               class="text-center"
               style="background-color: #0c62a0; color: #e9f8ff"
+              colspan="2"
             >
               Atividade
             </th>
@@ -113,11 +114,15 @@
         <tbody>
           <tr *ngFor="let servico of servicos">
             <td class="text-center">{{ servico.sala.numero }}</td>
-            <td
-              class="text-center"
-              *ngFor="let atividade of servico.atividades"
-            >
-              {{ atividade.descricao }}
+            <td class="text-center" colspan="2">
+              <table class="table table-primary table-striped">
+                <tr
+                  class="text-center"
+                  *ngFor="let atividade of servico.atividades"
+                >
+                  <td class="text-center">{{ atividade.descricao }}</td>
+                </tr>
+              </table>
             </td>
             <td class="text-center">
               {{ servico.dataHoraFim | date : "dd/MM/yyyy" }}
@@ -129,7 +134,7 @@
   </div>
 
   <!--TODO Descobrir quais os links que devo colocar no href-->
-  <div class="row">
+  <!-- <div class="row">
     <nav aria-label="Navegação">
       <ul class="pagination justify-content-center">
         <li class="page-item">
@@ -178,7 +183,7 @@
         </li>
       </ul>
     </nav>
-  </div>
+  </div> -->
 
   <div class="row">
     <div class="col col-3 col-sm-3 offset-sm-1 offset-1 justify-content-start">
