@@ -12,6 +12,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./servicos/servicos.module').then((m) => m.ServicosModule),
   },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./telaLogin/login.module').then((m) => m.LoginModule),
+  },
 ];
 
 @NgModule({
