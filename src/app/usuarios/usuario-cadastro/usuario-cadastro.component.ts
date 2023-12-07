@@ -17,7 +17,7 @@ export class UsuarioCadastroComponent implements OnInit {
   public cargos: string[] = [];
   public niveis: string[] = [];
   public idUsuario: number;
-  public isEdit: boolean = true;
+  // public isEdit: boolean = true;
 
   @ViewChild('ngForm')
   public ngForm: NgForm;
@@ -70,15 +70,15 @@ export class UsuarioCadastroComponent implements OnInit {
   }
 
   salvar(form: NgForm){
-    if(form.invalid){
-      Swal.fire("Atenção", "Revise, por gentileza", 'warning');
-      return;
-    }
-    if(this.usuario.id){
-      this.isEdit = true;
+    // if(form.invalid){
+    //   Swal.fire("Atenção", "Revise, por gentileza", 'warning');
+    //   return;
+    // }
+    if(this.idUsuario){
+      // this.isEdit = true;
       this.atualizarUsuario()
     }else{
-      this.isEdit = false;
+      // this.isEdit = false;
       this.inserirUsuario();
     }
   }
@@ -87,7 +87,6 @@ export class UsuarioCadastroComponent implements OnInit {
     this.usuarioService.atualizar(this.usuario).subscribe(
       (sucesso) => {
         Swal.fire('Sucesso', 'Usuario atualizado!', 'success');
-        this.usuario = new Usuario();
       },
       (erro) => {
         Swal.fire(
