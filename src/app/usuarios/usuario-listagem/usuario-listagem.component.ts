@@ -16,8 +16,8 @@ import * as XLSX from 'xlsx';
 export class UsuarioListagemComponent implements OnInit {
   public usuarios: Array<Usuario> = new Array();
   public seletor: UsuarioSeletor = new UsuarioSeletor();
-  public cargos: string[] = [];
-  public status: string[] = [];
+  public cargos: string[];
+  public status: string[];
 
   public mostrar: boolean;
   public esconder: boolean;
@@ -72,6 +72,15 @@ export class UsuarioListagemComponent implements OnInit {
   }
 
   filtrarUsuario() {
+    // const localStartTime = new Date(this.seletor.dataDesligamentoInicio);
+    // const localEndTime = new Date(this.seletor.dataDesligamentoFim);
+
+    // // Ajuste de timezone para menos 3 horas
+    // localStartTime.setHours(localStartTime.getHours() - 3);
+    // localEndTime.setHours(localEndTime.getHours() - 3);
+    // this.seletor.dataDesligamentoInicio = localStartTime;
+    // this.seletor.dataDesligamentoFim = localEndTime;
+
     this.usuarioService.listarComSeletor(this.seletor).subscribe(
       (resultado) => {
         this.usuarios = resultado;

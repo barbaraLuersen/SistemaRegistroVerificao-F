@@ -8,11 +8,11 @@
         <h3>CONSULTA DE FUNCIONÁRIOS</h3>
       </div>
       <!--FILTRO-->
-      <div class="col col-md-4 mt-4">
+      <div class="col col-md-4 mt-4 ">
         <a class="filtro" (click)="mostrarFiltros()"
           ><i><img src="../assets/filtro.svg" alt="Icone de filtro" /></i
         ></a>
-        <label class="fw-medium" style="color: #021925">Filtro</label>
+        <label class="mx-2 fw-medium" style="color: #021925">Filtro</label>
       </div>
     </div>
 
@@ -90,7 +90,7 @@
             class="form-control border border-0"
             style="background: #dcf2fc"
             name="dataDesligamentoInicio"
-            type="date"
+            type="datetime-local"
             [(ngModel)]="seletor.dataDesligamentoInicio"
           />
         </div>
@@ -102,7 +102,7 @@
             class="form-control border border-0"
             style="background: #dcf2fc"
             name="dataDesligamentoFim"
-            type="date"
+            type="datetime-local"
             [(ngModel)]="seletor.dataDesligamentoFim"
           />
         </div>
@@ -172,7 +172,7 @@
               <td class="text-center">{{ usuario.cargo }}</td>
               <td class="text-center">{{ usuario.statusUsuario }}</td>
               <td class="text-center">
-                {{ usuario.dataDesligamento | date : "dd/MM/yyyy" }}
+                {{ usuario.dataDesligamento | date : "dd/MM/yyyy - HH:mm" }}
               </td>
             </tr>
           </tbody>
