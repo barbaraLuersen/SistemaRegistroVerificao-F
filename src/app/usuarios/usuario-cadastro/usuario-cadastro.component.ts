@@ -16,6 +16,8 @@ export class UsuarioCadastroComponent implements OnInit {
   public usuario: Usuario = new Usuario();
   public cargos: string[] = [];
   public niveis: string[] = [];
+  public idUsuario: number;
+  public isEdit: boolean = true;
 
   @ViewChild('ngForm')
   public ngForm: NgForm;
@@ -57,14 +59,52 @@ export class UsuarioCadastroComponent implements OnInit {
         );
       }
     );
+
+    this.route.params.subscribe(params => {
+      this.idUsuario = params['id'];
+
+      if(this.idUsuario){
+        this.buscarUsuario();
+      }
+    });
   }
 
-  inserirUsuario(ngForm: NgForm) {
+  salvar(form: NgForm){
+    if(form.invalid){
+      Swal.fire("Atenção", "Revise, por gentileza", 'warning');
+      return;
+    }
+    if(this.usuario.id){
+      this.isEdit = true;
+      this.atualizarUsuario()
+    }else{
+      this.isEdit = false;
+      this.inserirUsuario();
+    }
+  }
+
+  atualizarUsuario() {
+    this.usuarioService.atualizar(this.usuario).subscribe(
+      (sucesso) => {
+        Swal.fire('Sucesso', 'Usuario atualizado!', 'success');
+        this.usuario = new Usuario();
+      },
+      (erro) => {
+        Swal.fire(
+          'Erro',
+          'Erro ao editar usuario: ' + 'preencha todos os campos',
+          'error'
+        );
+      }
+    );
+  }
+
+  inserirUsuario() {
     this.usuarioService.inserir(this.usuario).subscribe(
       (sucesso) => {
         Swal.fire('Sucesso', 'Usuario cadastrado!', 'success');
         this.usuario = new Usuario();
-        //this.limparFormulario();
+        // this.limparFormulario();
       },
       (erro) => {
         Swal.fire(
@@ -76,7 +116,15 @@ export class UsuarioCadastroComponent implements OnInit {
     );
   }
 
-  //limparFormulario() {
-  //this.ngForm. = false;
-  //}
+  buscarUsuario(){
+    this.usuarioService.pesquisarPorId(this.idUsuario).subscribe(
+      resultado => {
+        this.usuario = resultado;
+      },
+      erro => {
+        Swal.fire("Erro", "Erro ao buscar o usuário com id ("
+                      + this.idUsuario + ") : " + erro, 'error');
+      }
+    );
+  }
 }

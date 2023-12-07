@@ -9,6 +9,7 @@ import { HomeComponent } from '../dashboard/home/home.component';
 
 const routes: Routes = [
   { path: 'cadastro', component: UsuarioCadastroComponent },
+  { path: 'cadastro/:id', component: UsuarioCadastroComponent },
   { path: 'afastamento', component: UsuarioAfastamentoComponent },
   { path: 'edicao', component: UsuarioEdicaoComponent },
   { path: 'listagem', component: UsuarioListagemComponent },

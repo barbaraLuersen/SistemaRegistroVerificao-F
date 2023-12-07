@@ -95,6 +95,10 @@ export class UsuarioListagemComponent implements OnInit {
     this.router.navigate(['/dashboard/']);
   }
 
+  editar(id: number){
+    this.router.navigate(['/usuarios/cadastro', id]);
+  }
+
   fileName = 'ExcleSheet.xlsx';
   exportarPlanilhaUsuario() {
     let data = document.getElementById('tabela-usuarios');

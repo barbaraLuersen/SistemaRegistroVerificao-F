@@ -8,7 +8,7 @@
         <h3>CONSULTA DE FUNCIONÁRIOS</h3>
       </div>
       <!--FILTRO-->
-      <div class="col col-md-4 mt-4 ">
+      <div class="col col-md-4 mt-4">
         <a class="filtro" (click)="mostrarFiltros()"
           ><i><img src="../assets/filtro.svg" alt="Icone de filtro" /></i
         ></a>
@@ -164,6 +164,13 @@
               >
                 Data de desligamento
               </th>
+              <th
+                scope="col"
+                class="text-center"
+                style="background-color: #0c62a0; color: #e9f8ff"
+              >
+                Edição
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -173,6 +180,23 @@
               <td class="text-center">{{ usuario.statusUsuario }}</td>
               <td class="text-center">
                 {{ usuario.dataDesligamento | date : "dd/MM/yyyy - HH:mm" }}
+              </td>
+              <td class="text-center">
+                <button
+                  class="btn btn-xs mr-12"
+                  style="
+                    background: linear-gradient(
+                      180deg,
+                      #4ac9ff 0%,
+                      #06b5ec 100%
+                    );
+                    color: #00314d;
+                    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+                  "
+                  (click)="editar(usuario.id)"
+                >
+                  Editar
+                </button>
               </td>
             </tr>
           </tbody>
